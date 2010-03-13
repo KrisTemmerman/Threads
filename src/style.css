@@ -1,0 +1,372 @@
+/*
+ * @author Joeri Hermans
+ * @since 8 March 2010
+ */
+body{
+	background:#fafafa;
+	margin:0 0 50px 0;
+	font-family:Helvatica,Arial,Sans-serif;
+	font-size:12px;
+	color:#222;
+	text-align:center;
+	padding:0;
+}
+
+/* Basic Settings */
+
+.ajax{
+	display:none;
+	background:url("img/ajax.gif") no-repeat;
+	height:24px;
+	left:190px;
+	position:absolute;
+	top:18px;
+	width:24px;
+}
+
+a img{
+	border:0;
+}
+
+.left{
+	float:left;
+}
+
+.right{
+	float:right;
+}
+
+.inline{
+	display:inline-block;
+}
+
+.hide{
+	display:none;
+}
+
+.block{
+	display:block;
+}
+
+.module{
+	display:inline-block;
+	width:49%;
+}
+
+	.module h3{
+		-moz-border-radius:4px;
+		-webkit-border-radius:4px;
+		color:#6f6f6f;
+		background:none repeat scroll 0 0 #dfdfdf;
+		display:block;
+		font-size:15px;
+		margin:0 0 5px;
+		padding:12px;
+		font-weight:normal;
+	}
+
+#headerBar{
+	display:inline-block;
+	width:100%;
+	height:60px;
+	border-bottom:3px #3899db solid;
+	background:#3fa7ed;
+}
+
+	.headerWrapper{
+		position:relative;
+		display:inline-block;
+		min-width:980px;
+		max-width:1400px;
+		text-align:left;
+		width:95%;
+	}
+
+	.headerWrapper h1{
+		float:left;
+		color:#fff;
+	}
+	
+	.headerWrapper #navigation{
+		float:right;
+		padding:0;
+		margin:23px 0 0;
+	}
+	
+		#navigation li{
+			list-style:none;
+			float:left;
+			margin-left:10px;
+		}
+		
+			#navigation li a{
+				padding:8px 12px;
+				color:#fff;
+				text-decoration:none;
+				font-size:13px;
+				background:#8cc9f2;
+				-moz-border-radius:4px;
+				-webkit-border-radius:4px;
+			}
+			
+			#navigation li a:hover{
+				background:#2581bf;
+			}
+			
+			#navigation li a:active{
+				background:#fff;
+				color:#2581bf;
+			}
+			
+			#navigation li a.selected{
+				background:#2175ae !important;
+			}
+			
+			#navigation li a.navLogout{
+				background:#c6c6c6;
+			}
+			
+			#navigation li a.navLogout:active{
+				color:#fff !important;
+			}
+			
+#headerDescription{
+	width:100%;
+	background:#dfdfdf;
+	border-bottom:1px solid #b6b6b6;
+	height:60px;
+	display:inline-block;
+}
+
+	.headerWrapper #pageDescription{
+		float:left;
+		color:#6f6f6f;
+		font-weight:normal;
+		margin:19px 0;
+	}
+	
+	.headerWrapper .extraNav{
+		float:right;
+		margin:23px 0 0;
+		padding:0;
+	}
+	
+		.extraNav li{
+			list-style:none;
+			margin-left:10px;
+			float:left;
+		}
+				
+		.extraNav li a{
+			font-size:12px;
+			padding:6px 10px;
+			color:#6f6f6f;
+			text-decoration:none;
+			-moz-border-radius:4px;
+			-webkit-border-radius:4px;
+		}
+		
+		.extraNav li a:hover{
+			background:#ccc;
+		}
+		
+		.extraNav li a.selected{
+			background:#f7f7f7 !important;
+		}
+
+#container{
+	max-width:1400px;
+	min-width:980px;
+	width:95%;
+	text-align:left;
+	margin:15px auto 0;
+	display:inline-block;
+}
+
+.dialog_overlay{
+	height:0;
+	left:0;
+	overflow:visible;
+	position:absolute;
+	top:0;
+	width:100%;
+	z-index:101;
+	text-align:center;
+}
+
+.dialog_container{
+	text-align:left;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	position:relative;
+	margin:auto;
+	display:none;
+	padding:10px;
+	background:none repeat scroll 0 0 rgba(82, 82, 82, 0.7);
+}
+
+	.dialog_container .dialog_content{
+		background:#fafafa;
+		direction:ltr;
+		border:1px solid #555;
+		
+	}
+	
+		.dialog_content .dialog_body{
+			padding:10px;
+			border-bottom:1px solid #ccc;
+		}
+		
+		.dialog_content .dialog_buttons{
+			display:block;
+			padding:10px;
+			background:#f2f2f2;
+			text-align:right;
+		}
+		
+			.dialog_buttons h5{
+				-webkit-border-radius:5px;
+				-moz-border-radius:5px;
+				background:none repeat scroll 0 0 #2175AE;
+				border:1px solid #2175AE;
+				color:#FAFAFA;
+				cursor:pointer;
+				display:none;
+				margin:0;
+				padding:5px 12px;
+			}
+			
+			.dialog_buttons .close{
+				display:inline-block !important;
+			}
+
+/* End Basic Settings */
+
+/* Begin ToDo */
+
+.todo_container{
+	display:inline-block;
+	background:#eee;
+	width:100%;
+}
+
+	.todo_container .buttons{
+		display:block;
+	}
+	
+	.todo_container .body{
+		display:inline-block;
+		margin:0;
+		padding:0;
+		width:100%;
+	}
+	
+		.todo_container .body .day{
+			list-style:none;
+			padding:0;
+			margin:0 0 25px 0;
+			width:97%;
+			display:inline-block;
+		}
+		
+			.todo_container .body .day h4{
+				padding:5px 0;
+				font-size:15px;
+				border-bottom:1px dashed #ccc;
+				display:block;
+				font-weight:normal;
+				margin:0 0 0 12px;
+				color:#666;
+			}
+			
+				.todo_container .body .day h4 span{
+					margin:0;
+					color:#999;
+					font-size:12px;
+				}
+				
+				.todo_container .body .day h4 .todoNav{
+					float:right;
+					text-decoration:none;
+					font-size:12px;
+					margin:2px 0 0 5px;
+					color:#2175ae;
+				}
+				
+				.todo_container .body .day h4 .todoNav:hover{
+					text-decoration:underline;
+				}
+				
+			.todo_container .body .day fieldset{
+				text-align:center;
+				margin:0 0 30px 0;
+				padding:12px;
+				border:0;
+			}
+			
+				.todo_container .body .day fieldset input{
+					display:inline-block;
+					padding:6px 10px;
+					width:320px;
+					border:3px solid #ccc;
+					-moz-border-radius:4px;
+					-webkit-border-radius:4px;
+					color:#555;
+				}
+				
+			.todo_container .body .day ul{
+				margin:0;
+				padding:12px;
+			}
+			
+				.todo_container .body .day ul li{
+					position:relative;
+					display:block;
+					list-style:none;
+					border-top:1px solid #ccc;
+				}
+				
+					.todo_container .body .day ul li a{
+						font-size:13px;
+						display:block;
+						padding:8px;
+						text-decoration:none;
+						color:#666;
+					}
+					
+					.todo_container .body .day ul li a:hover{
+						text-decoration:line-through;
+						color:red;
+					}
+					
+					.todo_container .body .day ul li a.done{
+						color:green;
+						text-decoration:line-through;
+					}
+					
+					.todo_container .body .day ul li:hover a.delete{
+						display:inline-block;
+					}
+										
+						.todo_container .body .day ul li a.delete{
+							-moz-border-radius:5px;
+							-webkit-border-radius:5px;
+							position:absolute;
+							right:8px;
+							top:8px;
+							background:#222;
+							z-index:2;
+							padding:3px !important;
+							margin:0;
+							display:none;
+							font-size:8px;
+							color:#fff;
+							text-decoration:none !important;
+							color:#fff !important;
+						}
+				
+				.todo_container .body .day ul li:first-child{
+					border:0 !important;
+				}
+
+/* End ToDo */
