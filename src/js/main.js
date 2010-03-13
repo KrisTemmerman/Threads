@@ -7,9 +7,9 @@
 //Settings
 
 //Host base address.
-var base = "http://192.168.1.2:8888/threadsv21/src/";
+var base = "http://yourhost.com/threads/src/";
 
-//Dialog
+//Dialog (This needs to be adjusted...)
 var dialogOverlayHeight = screen.height;
 var dialogHeight = $('.dialog_container').height();
 var dialogTop = null;
