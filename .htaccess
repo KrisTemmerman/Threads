@@ -1,9 +1,11 @@
+# This will be auto-generated in Threads' next version.
 <IfModule mod_rewrite.c>
 RewriteEngine On
 # Options +FollowSymlinks
-RewriteBase /threadsv21/
+# Note: Threads is a subdirectory
+RewriteBase /threads/
 # Location of your system on the server.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /threadsv21/index.php [L]
+RewriteRule . /threads/index.php [L]
 </IfModule>
