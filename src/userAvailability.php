@@ -1,7 +1,7 @@
 <?php
 /*
  * @author Joeri Hermans
- * @date 9 March 2010
+ * @date 14 March 2010
  * @description Checks if this user exists.
  */
 
