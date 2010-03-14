@@ -370,3 +370,54 @@ a img{
 				}
 
 /* End ToDo */
+
+/* BEGIN Add Content */
+
+.addContentList{
+	margin:0;
+	padding:0;
+	display:inline-block;
+}
+
+	.addContentList li{
+		list-style:none;
+		margin:0 0 5px 0;
+		padding:0;
+	}
+	
+		.addContentList li a{
+			text-align:center;
+			-moz-border-radius:3px;
+			-webkit-border-radius:3px;
+			display:block;
+			font-size:12px;
+			padding:6px 10px;
+			background:#f2f2f2;
+			border:1px solid #ddd;
+			color:#2175AE;
+			text-decoration:none;
+		}
+		
+		.addContentList li a:hover{
+			background:#8cc9f2;
+			color:#fff;
+			border:1px solid #2175ae;
+		}
+		
+.dialog_body label{
+	font-size:11px;
+	color:#666;
+	margin:5px 0 3px 0;
+}
+
+.dialog_body input{
+	padding:4px 8px;
+	color:#333;
+	border:1px solid #aaa; 
+}
+
+.dialog_body input.error{
+	border:1px solid red;
+}
+
+/* END Add Content */

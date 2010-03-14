@@ -10,9 +10,10 @@
 
 //BEGIN constants
 
-define('BASE','http://yourhost.com'); //Set here your Threads System location, don't forget to edit this in your .htaccess and your main.js file.
+define('HOST','yourhost.com'); //Host without HTTP protocol.
+define('BASE','http://yourhost.com/threads/'); //Set here your Threads System location, don't forget to edit this in your .htaccess and your main.js file.
 define('THEMEBASE',BASE . 'src/'); //If you set your BASE Constant correctly you don't have to adjust this.
-define('TITLE','Your Project Name'); //Your system title.
+define('TITLE','Threads Project'); //Your system title.
 
 //END constants
 
@@ -21,6 +22,6 @@ define('TITLE','Your Project Name'); //Your system title.
 define('DBHOST','localhost'); //Your MySQL host, most of the time this is "localhost".
 define('DBUSER','username'); //Your MySQL username.
 define('DBPASS','password'); //Your MySQL password.
-define('DBDATABASE','databaseName'); //Your MySQL database.
+define('DBDATABASE','database'); //Your MySQL database.
 
 //END database settings 
