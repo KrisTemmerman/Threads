@@ -22,6 +22,6 @@ define('TITLE','Threads Project'); //Your system title.
 define('DBHOST','localhost'); //Your MySQL host, most of the time this is "localhost".
 define('DBUSER','username'); //Your MySQL username.
 define('DBPASS','password'); //Your MySQL password.
-define('DBDATABASE','database'); //Your MySQL database.
+define('DBDATABASE','threads'); //Your MySQL database.
 
 //END database settings 

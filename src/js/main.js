@@ -134,68 +134,75 @@ $('.navAddContent').click(function(){
 		var resetHtml = html;
 		showDialog(html);
 		
-		$('.addContentUser').click(function(){
+	});
+	
+});
+
+$('.addContentUser').live('click',function(){
+	
+	var name = $('input[name="addContentUserName"]').val();
+	var objName = $('input[name="addContentUserName"]');
+	var lastName = $('input[name="addContentUserLastName"]').val();
+	var objLastName = $('input[name="addContentUserLastName"]');
+	var email = $('input[name="addContentUserEmail"]').val();
+	var objEmail = $('input[name="addContentUserEmail"]');
+	var username = $('input[name="addContentUn"]').val();
+	var objUsername = $('input[name="addContentUn"]');
+	var password = $('input[name="addContentPw"]').val();
+	var objPassword = $('input[name="addContentPw"]');
+	var permission = $('input[name="addContentUserPermission"]').val();
+	if( checkLength(name) == false ){
+		objName.addClass('error');
+		return false;
+	}
+	objName.removeClass('error');
+	if( checkLength(lastName) == false ){
+		objLastName.addClass('error');
+		return false;
+	}
+	objLastName.removeClass('error');
+	if( checkEmail(email) == false ){
+		objEmail.addClass('error');
+		return false;
+	}
+	objEmail.removeClass('error');
+	if( checkLength(username) == false ){
+		objUsername.addClass('error');
+		return false;
+	}
+	objUsername.removeClass('error');
+	if( checkLength(password) == false ){
+		objPassword.addClass('error');
+		return false
+	}
+	objPassword.removeClass('error');
+	$.post(base + "userAvailability.php",{'addContentUn':username,'addContentUserEmail':email},function(data){
+		
+		if( data == 'yes' ){
 			
-			var name = $('input[name="addContentUserName"]').val();
-			var objName = $('input[name="addContentUserName"]');
-			var lastName = $('input[name="addContentUserLastName"]').val();
-			var objLastName = $('input[name="addContentUserLastName"]');
-			var email = $('input[name="addContentUserEmail"]').val();
-			var objEmail = $('input[name="addContentUserEmail"]');
-			var username = $('input[name="addContentUn"]').val();
-			var objUsername = $('input[name="addContentUn"]');
-			var password = $('input[name="addContentPw"]').val();
-			var objPassword = $('input[name="addContentPw"]');
-			var permission = $('input[name="addContentUserPermission"]').val();
-			if( checkLength(name) == false ){
-				objName.addClass('error');
-				return false;
-			}
-			objName.removeClass('error');
-			if( checkLength(lastName) == false ){
-				objLastName.addClass('error');
-				return false;
-			}
-			objLastName.removeClass('error');
-			if( checkEmail(email) == false ){
-				objEmail.addClass('error');
-				return false;
-			}
-			objEmail.removeClass('error');
-			if( checkLength(username) == false ){
-				objUsername.addClass('error');
-				return false;
-			}
-			objUsername.removeClass('error');
-			if( checkLength(password) == false ){
-				objPassword.addClass('error');
-				return false
-			}
-			objPassword.removeClass('error');
-			$.post(base + "userAvailability.php",{'addContentUn':username,'addContentUserEmail':email},function(data){
-				
-				if( data == 'yes' ){
-					
-					html = '<p style="text-align:center;">A user with this email-address or username allready exist.</p>' + resetHtml;
-					showDialog(html);
-					$('input[name="addContentUserName"]').val(name);
-					$('input[name="addContentUserLastName"]').val(lastName);
-					$('input[name="addContentUserEmail"]').addClass('error');
-					$('input[name="addContentUn"]').addClass('error');
-					
-				} else {
-					
-					$.post(base + 'newUser.php',{'addContentUserName':name,'addContentUserLastName':lastName,'addContentUserEmail':email,'addContentUn':username,'addContentPw':password,'addContentUserPermission':permission},function(){
-						$('.addContentUser').removeClass('addContentUser');
-						$('.dialog_buttons .ok').css({'display':'none'});
-						showDialog('<p>An email has been send to <strong>' + name + ' ' + lastName + '</strong> with his/her username and password.</p>');
-					});
-					
+			html = '<p style="text-align:center;">A user with this email-address or username allready exist.</p>' + resetHtml;
+			showDialog(html);
+			$('input[name="addContentUserName"]').val(name);
+			$('input[name="addContentUserLastName"]').val(lastName);
+			$('input[name="addContentUserEmail"]').addClass('error');
+			$('input[name="addContentUn"]').addClass('error');
+			
+		} else {
+			
+			$.ajax({
+				type:'post',
+				data:{'addContentUserName':name,'addContentUserLastName':lastName,'addContentUserEmail':email,'addContentUn':username,'addContentPw':password,'addContentUserPermission':permission},
+				success: function(){
+					$('.addContentUser').removeClass('addContentUser');
+					$('.dialog_buttons .ok').css({'display':'none'});
+					showDialog('<p>An email has been send to <strong>' + name + ' ' + lastName + '</strong> with his/her username and password.</p>');
+				},
+				error: function(){
+					showDialog('<p>An error occured while inserting <strong>' + name + ' ' + lastName + '</strong> to the database.');
 				}
-				
 			});
 			
-		});
+		}
 		
 	});
 	
