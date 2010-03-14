@@ -22,6 +22,7 @@ if( !empty($_SESSION['user']['username']) && !empty($_SESSION['user']['password'
 			$_SESSION['user']['id'] 		= $row['user_id']; //Fetching User Id.
 			$_SESSION['user']['name'] 		= $row['user_name']; //Fetching User Name.
 			$_SESSION['user']['lastName']	= $row['user_lastName']; //Fetching User Lastname.
+			$_SESSION['user']['perm']		= $row['user_permission']; //Fetching the users' permission.
 			
 		}
 		
@@ -41,6 +42,7 @@ if( isset( $_POST['username'] ) ){
 			$_SESSION['user']['lastName'] 	= $row['user_lastName'];
 			$_SESSION['user']['username'] 	= $row['user_username'];
 			$_SESSION['user']['password'] 	= $row['user_password'];
+			$_SESSION['user']['perm']		= $row['user_permission']; //Fetching the users' permission.
 		
 			header("location:" . BASE . "dashboard/");		
 		

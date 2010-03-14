@@ -65,8 +65,8 @@ function showDialog(html){
 function hideDialog(){
 	
 	$('.dialog_container').hide();
-	$('.dialog_buttons .ok').css({'display':'none'});
-	$('.dialog_buttons .close').css({'display':'none'});
+	$('.dialog_buttons .ok').css({'display':'none'}).removeClass().addClass('ok');
+	$('.dialog_buttons .close').css({'display':'none'}).removeClass().addClass('close');
 	
 }
 
@@ -91,112 +91,107 @@ function checkLength(Str){
 /*
  * End Function
  */
+	
+/*
+ * Begin Document Settings
+ */
 
-$(document).ready(function(){
+$('#dashFirst').load(base + 'dash-ra.php');
+$('#dashSec').load(base + 'dash-rss.php');
+$('#clientSec').load(base + 'client-search.php');
+
+//When a user clicks the 'Add Content' - button.
+$('.navAddContent').click(function(){
 	
-	/*
-	 * Begin Document Settings
-	 */
+	var html = 
+	'<ul class="addContentList">' +
+		'<li id="addContentUser"><a href="#">Add User To Threads</a></li>' +
+		'<li id="addContentClient"><a href="#">Add New Client</a></li>' +
+		'<li id="addContentProduct"><a href="#">Add New Product</a></li>' +
+		'<li id="addContentInvoice"><a href="#">Create New Invoice</a></li>' +
+		'<li id="addContentFile"><a href="#">Upload A File</a></li>' +
+		'<li id="addContentProject"><a href="#">Create New Project</a></li>'
+	+ '</ul>';
 	
-	$('#dashFirst').load(base + 'dash-ra.php');
-	$('#dashSec').load(base + 'dash-rss.php');
-	$('#clientSec').load(base + 'client-search.php');
+	showDialog(html);
 	
-	//When a user clicks the 'Add Content' - button.
-	$('.navAddContent').click(function(){
+	$('#addContentUser').click(function(){
 		
+		$('.dialog_buttons .ok').addClass('addContentUser');
 		var html = 
-		'<ul class="addContentList">' +
-			'<li id="addContentUser"><a href="#">Add User To Threads</a></li>' +
-			'<li id="addContentClient"><a href="#">Add New Client</a></li>' +
-			'<li id="addContentProduct"><a href="#">Add New Product</a></li>' +
-			'<li id="addContentInvoice"><a href="#">Create New Invoice</a></li>' +
-			'<li id="addContentFile"><a href="#">Upload A File</a></li>' +
-			'<li id="addContentProject"><a href="#">Create New Project</a></li>'
-		+ '</ul>';
-		
+			'<label>Name</label><br /><input type="text" name="addContentUserName" /><br />' +
+			'<label>Last Name</label><br /><input type="text" name="addContentUserLastName" /><br />' +
+			'<label>Email</label><br /><input type="text" name="addContentUserEmail" /><br />' +
+			'<label>Username</label><br /><input type="text" name="addContentUn" /><br />' +
+			'<label>Password</label><br /><input type="text" name="addContentPw" /><br />' +
+			'<label>Permission</label><br />' +
+			'<select name="addContentUserPermission">' +
+				'<option value="0">User</option>' +
+				'<option value="1">Admin</option>' +
+			'</select>';
+			//Add select here
+		$('.dialog_buttons .ok').css({'display':'inline-block'});
+		var resetHtml = html;
 		showDialog(html);
 		
-		$('#addContentUser').click(function(){
+		$('.addContentUser').click(function(){
 			
-			var html = 
-				'<label>Name</label><br /><input type="text" name="addContentUserName" /><br />' +
-				'<label>Last Name</label><br /><input type="text" name="addContentUserLastName" /><br />' +
-				'<label>Email</label><br /><input type="text" name="addContentUserEmail" /><br />' +
-				'<label>Username</label><br /><input type="text" name="addContentUn" /><br />' +
-				'<label>Password</label><br /><input type="text" name="addContentPw" /><br />' +
-				'<label>Permission</label><br />';
-				//Add select here
-			$('.dialog_buttons .ok').css({'display':'inline-block'});
-			var resetHtml = html;
-			showDialog(html);
-			
-			$('.dialog_buttons .ok').click(function(){
+			var name = $('input[name="addContentUserName"]').val();
+			var objName = $('input[name="addContentUserName"]');
+			var lastName = $('input[name="addContentUserLastName"]').val();
+			var objLastName = $('input[name="addContentUserLastName"]');
+			var email = $('input[name="addContentUserEmail"]').val();
+			var objEmail = $('input[name="addContentUserEmail"]');
+			var username = $('input[name="addContentUn"]').val();
+			var objUsername = $('input[name="addContentUn"]');
+			var password = $('input[name="addContentPw"]').val();
+			var objPassword = $('input[name="addContentPw"]');
+			var permission = $('input[name="addContentUserPermission"]').val();
+			if( checkLength(name) == false ){
+				objName.addClass('error');
+				return false;
+			}
+			objName.removeClass('error');
+			if( checkLength(lastName) == false ){
+				objLastName.addClass('error');
+				return false;
+			}
+			objLastName.removeClass('error');
+			if( checkEmail(email) == false ){
+				objEmail.addClass('error');
+				return false;
+			}
+			objEmail.removeClass('error');
+			if( checkLength(username) == false ){
+				objUsername.addClass('error');
+				return false;
+			}
+			objUsername.removeClass('error');
+			if( checkLength(password) == false ){
+				objPassword.addClass('error');
+				return false
+			}
+			objPassword.removeClass('error');
+			$.post(base + "userAvailability.php",{'addContentUn':username,'addContentUserEmail':email},function(data){
 				
-				var name = $('input[name="addContentUserName"]').val();
-				var objName = $('input[name="addContentUserName"]');
-				var lastName = $('input[name="addContentUserLastName"]').val();
-				var objLastName = $('input[name="addContentUserLastName"]');
-				var email = $('input[name="addContentUserEmail"]').val();
-				var objEmail = $('input[name="addContentUserEmail"]');
-				var username = $('input[name="addContentUn"]').val();
-				var objUsername = $('input[name="addContentUn"]');
-				var password = $('input[name="addContentPw"]').val();
-				var objPassword = $('input[name="addContentPw"]');
-				if( checkLength(name) == false ){
-					objName.addClass('error');
-					return false;
-				}
-				objName.removeClass('error');
-				if( checkLength(lastName) == false ){
-					objLastName.addClass('error');
-					return false;
-				}
-				objLastName.removeClass('error');
-				if( checkEmail(email) == false ){
-					objEmail.addClass('error');
-					return false;
-				}
-				objEmail.removeClass('error');
-				if( checkLength(username) == false ){
-					objUsername.addClass('error');
-					return false;
-				}
-				objUsername.removeClass('error');
-				if( checkLength(password) == false ){
-					objPassword.addClass('error');
-					return false
-				}
-				objPassword.removeClass('error');
-				$.post(base + "userAvailability.php",{'addContentUn':username,'addContentUserEmail':email},function(data){
+				if( data == 'yes' ){
 					
-					if( data == 'yes' ){
-						
-						html = '<p style="text-align:center;">A user with this email-address or username allready exist.</p>' + resetHtml;
-						showDialog(html);
-						$('input[name="addContentUserName"]').val(name);
-						$('input[name="addContentUserLastName"]').val(lastName);
-						$('input[name="addContentUserEmail"]').addClass('error');
-						$('input[name="addContentUn"]').addClass('error');
-						
-					} else {
-						
-						$.ajax({
-							type:'post',
-							data:{'addContentUserName':name,'addContentUserLastName':lastName,'addContentUserEmail':email,'addContentUn':username,'addContentPw':password},
-							success: function(){
-								$('.dialog_buttons .ok').css({'display':'none'});
-								showDialog('<p>An email has been send to <strong>' + name + ' ' + lastName + '</strong> with his/her username and password.</p>');
-							},
-							error: function(){
-								$('.dialog_buttons .ok').css({'display':'none'});
-								showDialog('<p>An error ocurred while adding this user to Threads. Please try again.</p>');
-							}
-						});
-						
-					}
+					html = '<p style="text-align:center;">A user with this email-address or username allready exist.</p>' + resetHtml;
+					showDialog(html);
+					$('input[name="addContentUserName"]').val(name);
+					$('input[name="addContentUserLastName"]').val(lastName);
+					$('input[name="addContentUserEmail"]').addClass('error');
+					$('input[name="addContentUn"]').addClass('error');
 					
-				});
+				} else {
+					
+					$.post(base + 'newUser.php',{'addContentUserName':name,'addContentUserLastName':lastName,'addContentUserEmail':email,'addContentUn':username,'addContentPw':password,'addContentUserPermission':permission},function(){
+						$('.addContentUser').removeClass('addContentUser');
+						$('.dialog_buttons .ok').css({'display':'none'});
+						showDialog('<p>An email has been send to <strong>' + name + ' ' + lastName + '</strong> with his/her username and password.</p>');
+					});
+					
+				}
 				
 			});
 			
@@ -204,35 +199,35 @@ $(document).ready(function(){
 		
 	});
 	
-	/*
-	 * End Document Settings
-	 */
+});
+
+/*
+ * End Document Settings
+ */
+
+/*
+ * Begin Extra Navigation Code
+ */
+
+$('#extraNavLeft li a').click(function(){
 	
-	/*
-	 * Begin Extra Navigation Code
-	 */
-	
-	$('#extraNavLeft li a').click(function(){
-		
-		$('#extraNavLeft *').removeClass('selected');
-		$(this).addClass('selected');
-		var page = $(this).attr('name');
-		$('.moduleLeft').load(base + page);
-		
-	});
-	
-	$('#extraNavRight li a').click(function(){
-		
-		$('#extraNavRight *').removeClass('selected');
-		$(this).addClass('selected');
-		var page = $(this).attr('name');
-		$('.moduleRight').load(base + page);
-		
-		
-	});
-	
-	/*
-	 * End Extra Navigation Code
-	 */
+	$('#extraNavLeft *').removeClass('selected');
+	$(this).addClass('selected');
+	var page = $(this).attr('name');
+	$('.moduleLeft').load(base + page);
 	
 });
+
+$('#extraNavRight li a').click(function(){
+	
+	$('#extraNavRight *').removeClass('selected');
+	$(this).addClass('selected');
+	var page = $(this).attr('name');
+	$('.moduleRight').load(base + page);
+	
+	
+});
+
+/*
+ * End Extra Navigation Code
+ */

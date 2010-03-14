@@ -411,9 +411,14 @@ a img{
 }
 
 .dialog_body input{
-	padding:4px 8px;
+	width:100%;
+	padding:4px 0;
 	color:#333;
 	border:1px solid #aaa; 
+}
+
+.dialog_body select{
+	width:100%;
 }
 
 .dialog_body input.error{

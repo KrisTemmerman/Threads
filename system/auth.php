@@ -17,6 +17,7 @@ if( empty($_SESSION['user']['username']) || empty($_SESSION['user']['password'])
 			$_SESSION['user']['id'] 		= $row['user_id']; //Fetching User Id.
 			$_SESSION['user']['name'] 		= $row['user_name']; //Fetching User Name.
 			$_SESSION['user']['lastName']	= $row['user_lastName']; //Fetching User Lastname.
+			$_SESSION['user']['perm']		= $row['user_permission']; //Fetching the users' permission.
 		}
 	} else { //When MySQL returns less or more then 1 row.
 		session_unset(); //Clearing all session vars.
