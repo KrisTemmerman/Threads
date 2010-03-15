@@ -13,6 +13,8 @@ $Uri 		= strip_tags($_SERVER['REQUEST_URI']); //Declaring the Uri var.
 $Uri 		= explode('/',$Uri); //Removing the / from the String.
 array_shift($Uri); //Putting the String into an array. Note: The first one is empty. Index:0.
 
+//Working on 0.3 => Dynamic and has 404 handling.
+
 switch($Uri[1]){
 	
 	case '':
