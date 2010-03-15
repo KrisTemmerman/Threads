@@ -1,0 +1,22 @@
+THREADS CRMS
+====================
+
+Install
+====================
+
+1. Open your DBRMS, add a database or if you already have one just run the SQL dump.
+2. Open .htaccess, change where indicated.
+3. Open system/config.php and change where indicated.
+4. Open src/js/main.js/ and change the base var to your own base.
+
+@note => Most of the will be auto-generated in next the next Threads' versions..
+	  => Threads is still in development.
+	  => Login: demo
+	  => Password: demo
+	  => Demo has admin permissions.
+
+
+Have fun!
+
+
+Yuri
