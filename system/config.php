@@ -10,8 +10,8 @@
 
 //BEGIN constants
 
-define('HOST','yourhost.com'); //Host without HTTP protocol.
-define('BASE','http://yourhost.com/threads/'); //Set here your Threads System location, don't forget to edit this in your .htaccess and your main.js file.
+define('HOST','artufex.be'); //Host without HTTP protocol.
+define('BASE','http://localhost:8888/threadsv21/'); //Set here your Threads System location, don't forget to edit this in your .htaccess and your main.js file.
 define('THEMEBASE',BASE . 'src/'); //If you set your BASE Constant correctly you don't have to adjust this.
 define('TITLE','Threads Project'); //Your system title.
 
@@ -20,8 +20,8 @@ define('TITLE','Threads Project'); //Your system title.
 //BEGIN database settings
 
 define('DBHOST','localhost'); //Your MySQL host, most of the time this is "localhost".
-define('DBUSER','username'); //Your MySQL username.
-define('DBPASS','password'); //Your MySQL password.
-define('DBDATABASE','threads'); //Your MySQL database.
+define('DBUSER','root'); //Your MySQL username.
+define('DBPASS','root'); //Your MySQL password.
+define('DBDATABASE','threadsv2'); //Your MySQL database.
 
 //END database settings 

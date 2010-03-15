@@ -3,9 +3,9 @@
 RewriteEngine On
 # Options +FollowSymlinks
 # Note: Threads is a subdirectory
-RewriteBase /threads/
+RewriteBase /threadsv21/
 # Location of your system on the server.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /threads/index.php [L]
+RewriteRule . /threadsv21/index.php [L]
 </IfModule>
