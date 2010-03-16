@@ -6,12 +6,13 @@
  * @contact joeri.her@gmail.com
  * @license GNU
  */
-$Include 	= null; //Declaring the Include var.
-$PageTitle 	= null;
-$IncludeParamter = null; //Declaring the IncludeParameter var.
-$Uri 		= strip_tags($_SERVER['REQUEST_URI']); //Declaring the Uri var.
-$Uri 		= explode('/',$Uri); //Removing the / from the String.
-array_shift($Uri); //Putting the String into an array. Note: The first one is empty. Index:0.
+$Include 			= null; //Declaring the Include var.
+$PageTitle 			= null;
+$IncludeParamter 	= null; //Declaring the IncludeParameter var.
+$Uri 				= strip_tags($_SERVER['REQUEST_URI']); //Declaring the Uri var.
+$dir         		= substr( getcwd(), strlen( $_SERVER[ 'DOCUMENT_ROOT' ] ) ); // e.g. /path/to/threads/
+$Uri        		= substr( $Uri, strlen( $dir ) );// e.g. /clients/ or /dashboard/
+$Uri         		= explode('/',$Uri); // Split on / character
 
 //Working on 0.3 => Dynamic and has 404 handling.
 
